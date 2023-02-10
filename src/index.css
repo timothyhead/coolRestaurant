@@ -1,0 +1,259 @@
+
+html {
+  font-family: Helvetica, sans-serif;
+}
+header {
+  margin-bottom: 20px;
+}
+div {
+  overflow: auto;
+}
+
+
+.red {
+  background-color: #ED220D;
+}
+.green {
+  background-color: #588B8B;
+}
+.orange {
+  background-color: #F28F3B;
+}
+.silk {
+  background-color: #FFD5C2;
+}
+.white {
+  background-color: white;
+  border-width: thin;
+  border-radius: 25px;
+}
+.corner {
+  border-radius: 25px;
+}
+.flex-container-verticle {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.flex-container-horizontal {
+display:  flex;
+flex-direction: row;
+}
+.flex-container-row {
+  display: flex;
+  flex-direction: row;
+  min-width: 100vh;
+}
+.menuSectionMargin {
+  margin-left: 150px;
+}
+.block {
+  display: block;
+}
+.inline {
+  display: inline;
+}
+.centre-100 {
+  margin: auto;
+  width: 100%;
+}
+.centre {
+  margin: auto;
+  width: 50%;
+}
+.centre-wide {
+  margin: auto;
+  width: 61%;
+}
+
+.border-red {
+  border-width: medium;
+  border-color: #ED220D;
+  border-style: solid;
+}
+.corner {
+  border-radius: 25px;
+}
+
+.menuSectionMargin {
+  margin-left: 150px;
+}
+textarea {
+  height: 100px;
+}
+.form-input-width {
+  width: 300px;
+}
+.left-aligned {
+  text-align: left;
+}
+
+/* To restaurant app form margins*/
+.margin-left-25px{
+  margin-left: 25px;
+}
+.margin-left-5px{
+  margin-left: 5px;
+}
+.margin-left-34px{
+  margin-left: 34px;
+}
+.margin-left-30px{
+  margin-left: 30px;
+}
+.margin-left-38px{
+  margin-left: 38px;
+}
+.margin-bottom-30 {
+  margin-bottom: 30px;
+}
+.margin-bottom-20 {
+  margin-bottom: 15px;
+}
+.margin-left {
+  margin-left: 47px;
+}
+.margin-top-city {
+  margin-top: 30px;
+}
+.margin-bottom-150 {
+  margin-bottom: 200px;
+}
+
+
+.form-div {
+  height: 31%;
+  width: 50%;
+}
+.to-retaurant-app-div {
+  height: 1500px;
+
+}
+.to-retaurant-app-menu-div {
+  height: 69%;
+  width:  50%;
+  margin:  auto;
+}
+.menu-div-for-to-retaurant-app-menu {
+  height: 100%;
+}
+.form-inner-div {
+  width: 69%;
+  height: 100%;
+ float: left;
+}
+.instruction-box-div {
+  height: 19%;
+  width: 19%;
+  float: right;
+
+}
+.add-button-div {
+  height: 12%;
+  width: 12%;
+  float: right;
+  margin-left: 19%;
+}
+.instruction-box-spacer-div {
+  height: 69%;
+}
+.image50 {
+  width: 50px;;
+  height: 50px;
+}
+.image100 {
+  width: 100px;
+  height: 100px;
+}
+.menu-sections-postion {
+  position: relative;
+  float: left;
+  padding-left: 10%;
+}
+
+
+
+.qty-postion {
+  position: relative;
+  left: 25%
+}
+.width-100 {
+  width: 100%;
+}
+.width-50 {
+  width: 50%;
+  background-color: pink;
+}
+
+.golden-ratio-width-large {
+  width: 64.7%;
+}
+.golden-ratio-width-small {
+  width: 35.3%;
+}
+.float-left-with-padding {
+float: left;
+padding-left: 5%;
+}
+.positon-absolute {
+position: absolute;
+
+}
+.left-box {
+  float:left;
+  width:25%;
+  height:18px;
+ 
+
+}
+.middle-box{
+  float:left;
+  width:50%;
+  height:1px;
+  background-color: #FFD5C2;
+
+}
+.right-box{
+  float:right;
+  width:25%;
+  height:1px;
+  background-color: #FFD5C2;
+
+}
+.capitalize {
+  text-transform: capitalize;
+
+}
+.vertical-center {
+  margin: 0;
+  position: relative;
+
+  top: 25%;
+ 
+}
+.orders-customer-details-box-left {
+  float: left;
+  width: 25%;
+}
+.orders-customer-details-box-middle {
+  float: left;
+  width: 25%; 
+}
+.orders-customer-details-box-right {
+  float: right;
+  width: 50%
+ 
+}
+
+.orders-name-height {
+  height: 60px;
+
+}
+.section-height {
+  height: 100px;
+}
+
+
+
+
+
