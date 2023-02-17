@@ -3,7 +3,7 @@ import './App.css';
 import React, { Component, useEffect, useState } from 'react';
 import Header from './Header';
 import socketIOClient from 'socket.io-client';
-const ENDPOINT = "https://malleable-torch-school.glitch.me/restaurant-app-website-nodejs/";
+const ENDPOINT = "https://malleable-torch-school.glitch.me/restaurant-app-website-nodejs";
 //import io from 'socket.io-client';
 //import  { w3cwebsocket as W3CWebSocket } from "websocket"
 
