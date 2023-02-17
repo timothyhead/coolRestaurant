@@ -216,7 +216,7 @@ setSides([]);
     setSpecalties([]);
     
 
-    const anotherResponse = await fetch("http://localhost:3000/recievedMenu", {
+    const anotherResponse = await fetch("https://malleable-torch-school.glitch.me/restaurant-app-website-nodejs/recievedMenu", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
