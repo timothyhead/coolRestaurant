@@ -74,7 +74,7 @@ setMenuArray(menu);
 
 <Link  className="block" to="/finishedMenu">Menu</Link>
 
-<Link  to="/orders">Orders</Link>
+<Link  to="/Orders">Orders</Link>
 <Link className="block" to="/to-restaurant">Create Menu</Link>
  
        </nav>
@@ -85,7 +85,7 @@ setMenuArray(menu);
        <Routes>
  
         <Route  path="/to-restaurant" element={<CreateMenu set={setMenu}/>}/>
-        <Route  path="/orders"  element={<Orders data={props.data} changeOrders={props.changeOrders} noChangeToEtag={props.noChangeToEtag}/> } />
+        <Route  path="/Orders"  element={<Orders data={props.data} changeOrders={props.changeOrders} noChangeToEtag={props.noChangeToEtag}/> } />
         <Route   path="/finishedMenu" element={<FinishedMenu isRedBorder={false} menuArray={aMenuArray} add={isClicked}/>}/>
         
        </Routes>
