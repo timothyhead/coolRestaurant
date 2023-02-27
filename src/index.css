@@ -82,6 +82,7 @@ textarea {
   height: 100px;
 }
 .form-input-width {
+
   width: 300px;
 }
 .left-aligned {
@@ -133,6 +134,8 @@ textarea {
   height: 69%;
   width:  50%;
   margin:  auto;
+  
+ 
 }
 .menu-div-for-to-retaurant-app-menu {
   height: 100%;

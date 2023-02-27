@@ -85,7 +85,7 @@ setMenuArray(menu);
        <Routes>
  
         <Route  path="/to-restaurant" element={<CreateMenu set={setMenu}/>}/>
-        <Route  path="/orders"  element={<Orders data={props.data} changeOrders={props.changeOrders}/> } />
+        <Route  path="/orders"  element={<Orders data={props.data} changeOrders={props.changeOrders} noChangeToEtag={props.noChangeToEtag}/> } />
         <Route   path="/finishedMenu" element={<FinishedMenu isRedBorder={false} menuArray={aMenuArray} add={isClicked}/>}/>
         
        </Routes>

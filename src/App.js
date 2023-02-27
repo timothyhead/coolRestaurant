@@ -8,8 +8,9 @@ const ENDPOINT = "https://historical-pretty-guava.glitch.me";
 //import  { w3cwebsocket as W3CWebSocket } from "websocket"
 
 function App() {
-const [posts, setPosts] = useState()
-const [noChangeToOrders, setNoChangeToOrders] = useState(false)
+const [posts, setPosts] = useState();
+const [noChangeToOrders, SetChangeToOrders] = useState(false);
+const [noChangeToEtag, setNoChangeToEtag] = useState(false);
 
 var etag = ""
 
@@ -52,6 +53,8 @@ socket.on("connection", (socket) =>
 socket.emit("hello", "world"); // receive a message from the client
 
 
+
+
 });
 socket.on('order', (data) => {
  
@@ -63,12 +66,14 @@ socket.on('order', (data) => {
    
        console.log("etags differnt");
          setPosts(JSON.parse(myData.order));
-         setNoChangeToOrders(false);
+         SetChangeToOrders(true);
          localStorage.setItem("Etag", etag)
     
       } else {
          console.log("etags the same");
-            setNoChangeToOrders(true);
+            SetChangeToOrders(false);
+            // toggle nochangeToEtag to update use effect in orders when changetoOrders == false
+            setNoChangeToEtag(noChangeToEtag != noChangeToEtag)
          
       }
  
@@ -162,9 +167,9 @@ function buttonClicked() {
        <button type="submit">Connected?</button>
      
      </form>
-     <button onClick={sendPing} type='button'>Get orders</button>
+  
 
-  <Header data={posts} changeOrders={noChangeToOrders}/>
+  <Header data={posts} changeOrders={noChangeToOrders} noChangeToEtag={noChangeToEtag}/>
     
     </div>
   );

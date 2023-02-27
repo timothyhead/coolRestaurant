@@ -47,7 +47,7 @@ function FinishedMenu(props) {
 let didInit = false;
 
    useEffect(() => {
-if (didInit == false) {
+// if (didInit == false) {
     didInit = true
     fetch("https://historical-pretty-guava.glitch.me/sendMenuToRectApp")
     .then((res) => res.json())
@@ -70,27 +70,27 @@ if (didInit == false) {
       
 
       
-        }
+       // }
   
    }, []);
 
 
  useEffect(() => {
-    if (didInit == false) {
-        didInit = true
+   // if (didInit == false) {
+       // didInit = true
     posts?.forEach((item) => {
         populateMenu(item)
        
     });
     setsIsLoadingFromBackUp(false)
-}
+//}
  }, [posts])
 
  useEffect(() =>{
-    if (didInit == false) {
-        didInit = true
+   // if (didInit == false) {
+      //  didInit = true
    setPosts(props.menuArray)
-    }
+  //  }
  }, [props])
 
 

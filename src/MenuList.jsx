@@ -6,10 +6,10 @@ function MenuList(props) {
 
   let didInit = false
   useEffect(() => {
-  if (!didInit) {
-      didInit = true
+ // if (!didInit) {
+     // didInit = true
       props.menuItems.shift()
-  }
+ // }
   }, [])
 
 function handleClick(id) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import CustomerDetails from "./CustomerDetails";
 import OrdersMeals from "./OrdersMeals";
 
@@ -12,57 +12,68 @@ function Orders(props) {
     const [specalties, setSpecalties] = useState({});
     const [orders, setOrders] = useState();
     const [address, setAddress] = useState();
-    const [currentOrders, setCurrentOrders] = useState([]);
+    const [currentOrders, setCurrentOrders] = useState(["Placeholder"]);
     const [pickUp, setPickUp] = useState();
-  var [hasChangedOrders, setHasChangedCurrentOrders] = useState(false);
-  var [hasSetCurrentOrders, setHasSetCurrentOrders] = useState(false)
-  var id = 0
-  var obj = []
-  var j = 1
+    const [hasChangedOrders, setHasChangedOrders] = useState(false)
+    const[hasChangedCurrentOrders, setHasChangedCurrentOrders] = useState(false)
+    const [deletedChanged, setDeletedChanged] = useState(false)
+    const [didinit, setdidinit] = useState(false);
+    const [didinit2, setdidinit2] = useState(false);
+    const [didinit3, setdidinit3] = useState(false);
+
+    var id = 0
+    var obj = []
+    var j = 1
 
 
-    var didInit = false
+    
    
 
 useEffect(() => {
   
-  
-    if ((!didInit) && (props.data != null)) {
-        didInit = true
-       
-       
-      
-     
 
+      if (props.changeOrders == true) {
+
+console.log("data changed1", props.data);
        
         props?.data != null ? obj = props?.data : obj = null
         if (obj) {
+
+            console.log("data changed2", props.data, 'obj', obj.orders, obj.address); 
             setOrders(obj.orders)
-            setAddress(obj.address)
-       
-        
-      
            
-        } else {
-     
-       
-
-        }
-
+            setAddress(obj.address)
+         console.log(localStorage.getItem("currentOrders"), "ASDFGHJKWERTYUIOE%^&*()_+");
+if (localStorage.getItem("currentOrders")) {
+   
+    console.log("First useeffect current orders set", JSON.parse(localStorage.getItem("currentOrders")));
+    setCurrentOrders(JSON.parse(localStorage.getItem("currentOrders")));
+    setdidinit(true)
 }
+          
+       
+        } 
 
-}, [props.data, props.changeOrders])
 
-var didInit2 = false 
+    } 
+
+
+}, [props.data])
+
+
 
 
 useEffect(() => {
    
+ console.log("second use effect called");
+   
     
-    if (didInit2 == false) {
-        didInit2 = true
+    if (props.changeOrders == true && didinit == true) {
+      setdidinit2(true)
+    
 
-
+console.log("orders", orders, didinit);
+setdidinit(false)
   orders?.forEach((item) => {
 
 
@@ -83,31 +94,41 @@ useEffect(() => {
                
     
             })
-            setCurrentOrders(JSON.parse(localStorage.getItem("currentOrders")))
+
+            console.log("current orders in orders second use effect", orders);
+         
+                console.log("current orders set in second use effect", localStorage.getItem("currentOrders"));
+                setCurrentOrders(localStorage.getItem("currentOrders") ? JSON.parse(localStorage.getItem("currentOrders")) : [])
+            
+           
         
-            setHasChangedCurrentOrders(hasChangedOrders = !hasChangedOrders);
+       setHasChangedOrders(state => !state)
            
           
-;
+
         }
     
  
-}, [orders])
+}, [didinit])
 
 
 
 
-   var didInit3 = false
 
-useEffect(() => {
-
-  if (didInit3 == false)   {
   
 
-    didInit3 = true
+useEffect(() => {
+   console.log("use effect3", props.changeOrders, didinit2);
+ 
+       setdidinit3(true)
+    if (props.changeOrders == true && didinit2 == true) {
+       setdidinit2(false)
    
-setCurrentOrders((prevalue) => {
+        console.log("Set current orders again", currentOrders);
 
+setCurrentOrders((prevalue) => {
+if (prevalue != null) {
+    console.log(prevalue, "prevalue");
   return  [...prevalue, {
         address: address,
         appetisers: appetisers,
@@ -119,37 +140,94 @@ setCurrentOrders((prevalue) => {
         date: props.data?.date
        
     }] 
+} else {
+    return  [{
+        address: address,
+        appetisers: appetisers,
+        saladandSoups: saladndSoups,
+        main: main,
+        sides: sides,
+        specalties: specalties,
+        id: j,
+        date: props.data?.date
+       
+    }] 
+}
 
     
 })
 
 
-
-
-setHasSetCurrentOrders(hasSetCurrentOrders = !hasSetCurrentOrders)
-  }
+setHasChangedCurrentOrders(state => !state)
+    }
 }, [hasChangedOrders])
-    var didInit4 = false
+ 
+
+
+
 useEffect(() => {
-    if ((!didInit4) && (props.changeOrders == false)) {
-        didInit4 = true
+ 
 
-localStorage.setItem("currentOrders", JSON.stringify(currentOrders));
+   if (props.changeOrders == true && didinit3 == true) {
+   setdidinit3(false)
+    localStorage.setItem("currentOrders", JSON.stringify(currentOrders));
+    console.log("use effect 4", currentOrders);
+}
+    
+}, [hasChangedCurrentOrders])
 
-    }
-}, [hasSetCurrentOrders])
-var didInit5 = false
 useEffect(() => {
 
-    if (didInit5 == false  && props.changeOrders == true) {
-     
+    if  (props.changeOrders == false) {
+      console.log(localStorage.getItem("currentOrders"), "props.changeOrders == false");
+       
+
+        localStorage.setItem("currentOrders", typeof localStorage.getItem("current") === undefined ? null : JSON.parse(localStorage.getItem("current")))
+    const storedItem = localStorage.getItem("currentOrders");
+    if (storedItem) {
+      
+       
+    console.log("storedItem", storedItem);
   
-        didInit5 = true
-        setCurrentOrders([])
-   
-    setCurrentOrders(JSON.parse(localStorage.getItem("currentOrders")))
+        console.log("Here", currentOrders);
+        
+        setCurrentOrders(JSON.parse(storedItem));
+
+
     }
-}, [props.changeOrders])
+   
+}
+}, [props.noChangeToEtag])
+
+
+
+
+function clicked(id) {
+   console.log("clicked");
+    let newStore = JSON.parse(localStorage.getItem("currentOrders"));
+    if (newStore?.length <= 1) {
+        setCurrentOrders([]) 
+        localStorage.setItem("currentOrders", []);
+    } else {
+   var result = newStore.filter(function (order, index) {
+       console.log(order.id, index, "ids");
+       return (order.id !== id)
+    })
+    };
+    setCurrentOrders(result)
+localStorage.setItem("currentOrders", JSON.stringify(result));
+
+
+console.log(result, "result", newStore);
+
+setCurrentOrders(result)
+
+
+
+
+console.log("clicked", deletedChanged);
+
+}
     return (
 <div>
 
@@ -164,8 +242,10 @@ useEffect(() => {
 <h2  className="inline qty-postion vertical-center">Qty </h2>
 </section>
 </div>
-{   currentOrders?.length > 0 &&  
-currentOrders?.map((item) => {
+{console.log("It's here", currentOrders)}
+ 
+{ currentOrders ?
+    currentOrders.map((item) => {
   
 if (item.address != null) {
 
@@ -200,11 +280,16 @@ if (item.address != null) {
 </div>
 </section>
 </div>
-    
+   <button  onClick={() => {
+    clicked(item.id)
+}}>ORDERS SENT? NOW DELETE ITEM</button>
 </details>
 
 </ul>  
-}})}
+}})
+: console.log("No current orders")
+}
+
 
 
  </div>
