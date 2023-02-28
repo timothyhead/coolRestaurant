@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState} from "react";
 import MenuList from "./MenuList";
-import axios from 'axios';
+
 
 
 
@@ -34,25 +34,17 @@ function Menu(props) {
         image:  String
         }]);
     const [aClass, setAClass]  = useState()
-    var [menuArray, setMenuArray] = useState([{menuItem: [],
-        detail: [],
-        sectionName: "",
-        isSet: false
-        }]);
-    var [isSet, setIset] = useState(false);
+  
     const [menu, setMenu]  = useState([]);
-    const [images , setImages]  = useState([]);
-    const [allData, setAllData] = useState({});
-    const [formData, setFormData] = useState();
+  
+    
     const [newMenu, setNewMenu] = useState([]);
   
 const ref = useRef(null);
 
 
 
-useEffect(() => {
-    setAllData({"menu": menu, "images": images})
-}, [images])
+
 
 
 
@@ -65,7 +57,7 @@ useEffect(() => {
    setAClass("silk corner flex-container-vertical border-red menu-div-for-to-retaurant-app-menu") 
 
         
-if (props.mealName != "") {
+if (props.mealName !== "") {
     populateMenu(props) 
     console.log("Hello populate menu");
 }
@@ -216,17 +208,17 @@ setSides([]);
     setSpecalties([]);
     
 
-    const anotherResponse = await fetch("https://historical-pretty-guava.glitch.me/recievedMenu", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-          },
-        body: JSON.stringify({"menu" : menu}),
+//     const anotherResponse = await fetch("https://historical-pretty-guava.glitch.me/recievedMenu", {
+//         method: "POST",
+//         headers: {
+//             'Content-Type': 'application/json'
+//             // 'Content-Type': 'application/x-www-form-urlencoded',
+//           },
+//         body: JSON.stringify({"menu" : menu}),
        
 
-    })
-   setMenu([])
+//     })
+//    setMenu([])
   
  
 

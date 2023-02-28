@@ -3,19 +3,16 @@ import {BrowserRouter as Router, Link, Routes,  Route, Outlet} from "react-route
 import FinishedMenu from "./FinishedMenu";
 import CreateMenu from "./ToRestaurantApp";
 import Orders from "./Orders";
-import { logDOM } from "@testing-library/react";
+
 
 
 
 
  function Header(props) {
 
-    const [sectionName, setSectionName] = useState("");
-    const [mealName, setMealName] = useState("");
-    const [bodyText, setBodyText] = useState("");
-    const [detailText, setDetailText] = useState("");
+  
     const [isClicked, setIsClicked] = useState(false);
-    const [selectedFile, setSelectedFile] = useState(false);
+
     var [aMenuArray, setMenuArray] = useState([{
         mealName: "",
        bodyText: "",
@@ -25,24 +22,24 @@ import { logDOM } from "@testing-library/react";
         section: ""
                 
              }]);
-   const [amenu, setAMenu] = useState(false);
+  
  
 
    
 
-    useEffect( () => {
-        aMenuArray = [{
-            mealName: "",
-            bodyText: "",
-            image: "",
-            detailText: "",
-            price: "",
-             section: ""
-    }];
+    // useEffect( () => {
+    //     aMenuArray = [{
+    //         mealName: "",
+    //         bodyText: "",
+    //         image: "",
+    //         detailText: "",
+    //         price: "",
+    //          section: ""
+    // }];
                     
 
         
-    }, [props.data]);
+    // }, [props.data]);
 
     function setMenu(menu) {
         console.log(menu, "menu");

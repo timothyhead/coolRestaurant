@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, useRef} from "react";
+import React, { useEffect, useState} from "react";
 import MenuList from "./MenuList";
 
 
@@ -29,27 +29,15 @@ function FinishedMenu(props) {
         sectionName: ""
         }]);
     const [aClass, setAClass]  = useState()
-    var [menuArray, setMenuArray] = useState([{menuItem: [],
-        detail: [],
-        sectionName: "",
-        isSet: false
-        }]);
-    var [isSet, setIset] = useState(false)
-    const [menu, setMenu]  = useState([{
-            mealName: "",
-            bodyText: "",
-            image: "",
-            detailText: "",
-             section: "",
-             isSet: false     
-                 }])
+   
+
                
-let didInit = false;
+
 
    useEffect(() => {
-// if (didInit == false) {
-    didInit = true
-    fetch("https://historical-pretty-guava.glitch.me/sendMenuToRectApp")
+
+ 
+    fetch("localhost:8080/sendMenuToRectApp")
     .then((res) => res.json())
     .then((data) => {
        setPosts(JSON.parse(data));
@@ -63,34 +51,31 @@ let didInit = false;
     });
         // ✅ Only runs once per app load
         setAClass("silk corner flex-container-vertical");
-    menuArray = [{menuItem: [],
-        detail: [],
-        section: ""
-        }]
+   
       
 
       
-       // }
+ 
   
    }, []);
 
 
  useEffect(() => {
-   // if (didInit == false) {
-       // didInit = true
+ 
     posts?.forEach((item) => {
         populateMenu(item)
        
     });
     setsIsLoadingFromBackUp(false)
-//}
+
  }, [posts])
 
+
+
  useEffect(() =>{
-   // if (didInit == false) {
-      //  didInit = true
+ 
    setPosts(props.menuArray)
-  //  }
+ 
  }, [props])
 
 
@@ -105,7 +90,7 @@ let didInit = false;
                 setAppetisers((preValue) => {
                
                     if (preValue.length !== 0) {
-                        if (preValue[0].menuItem.length == 1 ) {
+                        if (preValue[0].menuItem.length === 1 ) {
                         
                             return    [{
                          
@@ -142,7 +127,7 @@ let didInit = false;
             case "Salads and soups":
                 setSaladAndSoups((preValue) => {
                     if (preValue.length !== 0) {
-                        if (preValue[0].menuItem.length == 1 ) {
+                        if (preValue[0].menuItem.length === 1 ) {
                             return    [{
                        menuItem:  [myProps.mealName, myProps.bodyText],
                        detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Salads and soups"
@@ -174,7 +159,7 @@ let didInit = false;
             case "Main":
                 setMain((preValue) => {
                     if (preValue.length !== 0) {
-                        if (preValue[0].menuItem.length == 1 ) {
+                        if (preValue[0].menuItem.length === 1 ) {
                             return    [{
                        menuItem:  [myProps.mealName, myProps.bodyText],
                        detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Main"
@@ -207,7 +192,7 @@ let didInit = false;
             case "Sides":
                 setSides((preValue) => {
                     if (preValue.length !== 0) {
-                        if (preValue[0].menuItem.length == 1 ) {
+                        if (preValue[0].menuItem.length === 1 ) {
                             return    [{
                        menuItem:  [myProps.mealName, myProps.bodyText],
                        detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Sides"
@@ -240,7 +225,7 @@ let didInit = false;
     
              setSpecalties((preValue) => {
               if (preValue.length !== 0) {
-                if (preValue[0].menuItem.length == 1 ) {
+                if (preValue[0].menuItem.length === 1 ) {
                     return    [{
                menuItem:  [myProps.mealName, myProps.bodyText],
                detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Specalties"
