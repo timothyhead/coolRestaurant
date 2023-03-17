@@ -4,7 +4,7 @@ import React, { Component, useEffect, useState } from 'react';
 import Header from './Header';
 import socketIOClient from 'socket.io-client';
 const ENDPOINT = "https://localhost:8080";
-//import io from 'socket.io-client';
+import io from 'socket.io-client';
 //import  { w3cwebsocket as W3CWebSocket } from "websocket"
 
 function App() {
@@ -20,16 +20,16 @@ var etag = ""
 
 
 
-//   socket.onopen = () => {
-//       console.log(("Websocket client connected"));
-//       socket.send(JSON.stringify("hello from react app"))
-//    };
-//   socket.onmessage = (message) => {
-//       console.log((message, "message"));
-//    };
-//   socket.onerror = function() {
-//       console.log('Connection Error');
-//   };
+  socket.onopen = () => {
+      console.log(("Websocket client connected"));
+      socket.send(JSON.stringify("hello from react app"))
+   };
+  socket.onmessage = (message) => {
+      console.log((message, "message"));
+   };
+  socket.onerror = function() {
+      console.log('Connection Error');
+  };
 
 
 
