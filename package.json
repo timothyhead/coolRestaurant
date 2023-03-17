@@ -1,7 +1,7 @@
 {
   "name": "restaurant-app-website-react",
   "version": "0.1.0",
-  "homepage": "https://timothyhead.github.io/coolRestaurantPublic",
+  "homepage": "https://timothyhead.github.io/timothyhead-coolRestaurantPublic",
   "private": true,
   "proxy": "https://historical-pretty-guava.glitch.me",
   "dependencies": {
