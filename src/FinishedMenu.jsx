@@ -49,7 +49,7 @@ let didInit = false;
    useEffect(() => {
 // if (didInit == false) {
     didInit = true
-    fetch("https://localhost:8080/sendMenuToRectApp")
+    fetch("https://historical-pretty-guava.glitch.me/sendMenuToRectApp")
     .then((res) => res.json())
     .then((data) => {
        setPosts(JSON.parse(data));
@@ -101,7 +101,7 @@ let didInit = false;
         switch (myProps.section) {
           
             case "Appetisers":
-                console.log(myProps,"myProps");
+               
                 setAppetisers((preValue) => {
                
                     if (preValue.length !== 0) {

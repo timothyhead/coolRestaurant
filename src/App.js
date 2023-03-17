@@ -2,10 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import React, { Component, useEffect, useState } from 'react';
 import Header from './Header';
-import socketIOClient from 'socket.io-client';
-const ENDPOINT = "https://localhost:8080";
+//import socketIOClient from 'socket.io-client';
 
 
+
+// import  { w3cwebsocket as W3CWebSocket } from "websocket"
+ import {io} from 'socket.io-client';
+//const ENDPOINT = "https://localhost:8080";
+
+const socket = io("https://historical-pretty-guava.glitch.me");
 
 function App() {
 const [posts, setPosts] = useState();
@@ -34,17 +39,17 @@ var etag = ""
 
 
 var isInit = false
-const socket = socketIOClient(ENDPOINT, { 
-    "force new connection" : true,
-"reconnectionAttempts": "Infinity", 
-"timeout" : 10000,                  
-"transports" : ["websocket"],
-withCredentials:true,
-    extraHeaders:{
-        "my-custom-header": "abcd"
-    }
+// const socket = socketIOClient(ENDPOINT, { 
+//     "force new connection" : true,
+// "reconnectionAttempts": "Infinity", 
+// "timeout" : 10000,                  
+// "transports" : ["websocket"],
+// withCredentials:true,
+//     extraHeaders:{
+//         "my-custom-header": "abcd"
+//     }
 
-});
+// });
 
 useEffect(() => {
 
