@@ -64,7 +64,7 @@ setMenuArray(menu);
 
     return(
       
-        <Router> 
+        <Router basename="coolRestaurantPublic"> 
     
    <div>
    <header>
