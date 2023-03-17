@@ -216,7 +216,7 @@ setSides([]);
     setSpecalties([]);
     
 
-    const anotherResponse = await fetch("https://historical-pretty-guava.glitch.me/recievedMenu", {
+    const anotherResponse = await fetch("https://localhost:8080", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

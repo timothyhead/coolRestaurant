@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {BrowserRouter as Router, Link, Routes,  Route, Outlet} from "react-router-dom";
 import FinishedMenu from "./FinishedMenu";
-import CreateMenu from "./ToRestaurantApp";
+import EditMenu from "./EditMenu";
 import Orders from "./Orders";
 import { logDOM } from "@testing-library/react";
 
@@ -84,7 +84,7 @@ setMenuArray(menu);
     
        <Routes>
  
-        <Route  path="/to-restaurant" element={<CreateMenu set={setMenu}/>}/>
+        <Route  path="/to-restaurant" element={<EditMenu set={setMenu}/>}/>
         <Route  path="/orders"  element={<Orders data={props.data} changeOrders={props.changeOrders} noChangeToEtag={props.noChangeToEtag}/> } />
         <Route   path="/finishedMenu" element={<FinishedMenu isRedBorder={false} menuArray={aMenuArray} add={isClicked}/>}/>
         

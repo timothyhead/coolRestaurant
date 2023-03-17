@@ -31,6 +31,7 @@ return (
 
    return <li key={index}>
 <MenuItem  id={index} menuItem={item} onDelete={handleClick}/>
+<h1>Hello world</h1>
 
  </li>
   

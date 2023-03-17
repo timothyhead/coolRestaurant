@@ -3,7 +3,7 @@ import './App.css';
 import React, { Component, useEffect, useState } from 'react';
 import Header from './Header';
 import socketIOClient from 'socket.io-client';
-const ENDPOINT = "https://historical-pretty-guava.glitch.me";
+const ENDPOINT = "https://localhost:8080";
 //import io from 'socket.io-client';
 //import  { w3cwebsocket as W3CWebSocket } from "websocket"
 
@@ -34,7 +34,18 @@ var etag = ""
 
 
 var isInit = false
-const socket = socketIOClient(ENDPOINT);
+const socket = socketIOClient(ENDPOINT, { 
+    "force new connection" : true,
+"reconnectionAttempts": "Infinity", 
+"timeout" : 10000,                  
+"transports" : ["websocket"],
+withCredentials:true,
+    extraHeaders:{
+        "my-custom-header": "abcd"
+    }
+
+});
+
 useEffect(() => {
 
  
