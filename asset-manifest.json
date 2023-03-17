@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/coolRestaurant/static/css/main.83ea7fa8.css",
-    "main.js": "/coolRestaurant/static/js/main.172bd101.js",
+    "main.js": "/coolRestaurant/static/js/main.37afc0c6.js",
     "static/js/787.7db75f81.chunk.js": "/coolRestaurant/static/js/787.7db75f81.chunk.js",
     "static/media/logo.svg": "/coolRestaurant/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/coolRestaurant/index.html",
     "main.83ea7fa8.css.map": "/coolRestaurant/static/css/main.83ea7fa8.css.map",
-    "main.172bd101.js.map": "/coolRestaurant/static/js/main.172bd101.js.map",
+    "main.37afc0c6.js.map": "/coolRestaurant/static/js/main.37afc0c6.js.map",
     "787.7db75f81.chunk.js.map": "/coolRestaurant/static/js/787.7db75f81.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.83ea7fa8.css",
-    "static/js/main.172bd101.js"
+    "static/js/main.37afc0c6.js"
   ]
 }
