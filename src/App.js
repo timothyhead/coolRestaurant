@@ -4,8 +4,8 @@ import React, { Component, useEffect, useState } from 'react';
 import Header from './Header';
 import socketIOClient from 'socket.io-client';
 const ENDPOINT = "https://localhost:8080";
-import io from 'socket.io-client';
-//import  { w3cwebsocket as W3CWebSocket } from "websocket"
+
+
 
 function App() {
 const [posts, setPosts] = useState();
