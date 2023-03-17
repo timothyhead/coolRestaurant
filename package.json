@@ -1,7 +1,7 @@
 {
   "name": "restaurant-app-website-react",
   "version": "0.1.0",
-  "homepage": "https://gitname.github.io/react-gh-pages",
+  "homepage": "https://timothyhead.github.io/react-gh-pages",
   "private": true,
   "proxy": "https://historical-pretty-guava.glitch.me",
   "dependencies": {
