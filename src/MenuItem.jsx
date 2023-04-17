@@ -24,6 +24,7 @@ function handleClick() {
 
     return(
         <div >
+     
         <div  className="margin-bottom-20">
    <h3 className="inline">{MealName}</h3>
    <p  className="inline margin-left-30px">{BodyText}</p>
