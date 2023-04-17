@@ -10,7 +10,7 @@ import Header from './Header';
  import {io} from 'socket.io-client';
 //const ENDPOINT = "https://localhost:8080";
 
-const socket = io("https://historical-pretty-guava.glitch.me");
+const socket = io("https://historical-pretty-guava.glitch.me/");
 
 function App() {
 const [posts, setPosts] = useState();
@@ -160,7 +160,7 @@ const sendPing = () => {
 function buttonClicked() {
  
    localStorage.removeItem("currentOrders")
-  fetch("/api", {cache: "default"})
+  fetch("https://historical-pretty-guava.glitch.me//api", {cache: "default"})
      .then((res) => res.json())
      .then((data) => {
         setPosts(JSON.parse(data));

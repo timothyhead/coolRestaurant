@@ -49,7 +49,7 @@ let didInit = false;
    useEffect(() => {
 // if (didInit == false) {
     didInit = true
-    fetch("https://historical-pretty-guava.glitch.me/sendMenuToRectApp")
+    fetch("https://historical-pretty-guava.glitch.me/sendMenuToRectApp/")
     .then((res) => res.json())
     .then((data) => {
        setPosts(JSON.parse(data));

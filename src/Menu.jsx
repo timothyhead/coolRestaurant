@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState} from "react";
 import MenuList from "./MenuList";
-import axios from 'axios';
+
 
 
 
@@ -216,11 +216,12 @@ setSides([]);
     setSpecalties([]);
     
 
-    const anotherResponse = await fetch("https://historical-pretty-guava.glitch.me", {
+    const anotherResponse = await fetch("https://historical-pretty-guava.glitch.me/", {
+mode: "no-cors",
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
+            
           },
         body: JSON.stringify({"menu" : menu}),
        
