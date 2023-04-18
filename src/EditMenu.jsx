@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Menu from "./Menu";
 
 
-function CreateMenu(props) {
+function EditMenu(props) {
 
     const [sectionName, setSectionName] = useState("");
     const [mealName, setMealName] = useState("");
@@ -188,4 +188,4 @@ handleClick()
         </div>
     )
 };
-export default CreateMenu;
+export default EditMenu;

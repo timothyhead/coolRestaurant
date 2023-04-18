@@ -33,11 +33,16 @@ function FinishedMenu(props) {
 
                
 
-
    useEffect(() => {
+<<<<<<< HEAD
 
  
     fetch("localhost:8080/sendMenuToRectApp")
+=======
+// if (didInit == false) {
+    didInit = true
+    fetch("https://historical-pretty-guava.glitch.me/sendMenuToRectApp/")
+>>>>>>> temp
     .then((res) => res.json())
     .then((data) => {
        setPosts(JSON.parse(data));
@@ -86,7 +91,7 @@ function FinishedMenu(props) {
         switch (myProps.section) {
           
             case "Appetisers":
-                console.log(myProps,"myProps");
+               
                 setAppetisers((preValue) => {
                
                     if (preValue.length !== 0) {

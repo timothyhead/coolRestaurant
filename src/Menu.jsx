@@ -208,6 +208,7 @@ setSides([]);
     setSpecalties([]);
     
 
+<<<<<<< HEAD
 //     const anotherResponse = await fetch("https://historical-pretty-guava.glitch.me/recievedMenu", {
 //         method: "POST",
 //         headers: {
@@ -215,6 +216,16 @@ setSides([]);
 //             // 'Content-Type': 'application/x-www-form-urlencoded',
 //           },
 //         body: JSON.stringify({"menu" : menu}),
+=======
+    const anotherResponse = await fetch("https://historical-pretty-guava.glitch.me/", {
+mode: "no-cors",
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+            
+          },
+        body: JSON.stringify({"menu" : menu}),
+>>>>>>> temp
        
 
 //     })
@@ -283,7 +294,7 @@ function resetOutGoingMenuArrayToBackend() {
 
     return (
         <div className={aClass}>
-<h1 className="corner green">Menu</h1>
+<h1 className="corner green">Menu hello</h1>
 <section className="">
 
 <MenuList  className="menu-div" sectionName="Appetisers" menuItems={appetisers} delete={deleteAppetisers}/>

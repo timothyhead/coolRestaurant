@@ -1,6 +1,7 @@
 {
   "name": "restaurant-app-website-react",
   "version": "0.1.0",
+  "homepage": "https://timothyhead.github.io/coolRestaurant",
   "private": true,
   "proxy": "http://localhost:8080",
   "dependencies": {
@@ -12,11 +13,14 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
+    "socket.io": "^4.6.1",
     "socket.io-client": "^4.5.4",
     "web-vitals": "^2.1.4",
     "websocket": "^1.0.34"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -41,7 +45,18 @@
     ]
   },
   "devDependencies": {
+    "assert": "^2.0.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
     "eslint-plugin-jest": "^27.2.1",
-    "netlify-cli": "^12.12.1"
+    "gh-pages": "^5.0.0",
+    "https-browserify": "^1.0.0",
+    "netlify-cli": "^12.14.0",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.0"
   }
 }

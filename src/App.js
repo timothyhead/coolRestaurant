@@ -2,10 +2,22 @@
 import './App.css';
 import React, {useEffect, useState } from 'react';
 import Header from './Header';
+<<<<<<< HEAD
 import socketIOClient from 'socket.io-client';
 const ENDPOINT = "localhost: 8080";
 //import io from 'socket.io-client';
 
+=======
+//import socketIOClient from 'socket.io-client';
+
+
+
+// import  { w3cwebsocket as W3CWebSocket } from "websocket"
+ import {io} from 'socket.io-client';
+//const ENDPOINT = "https://localhost:8080";
+
+const socket = io("https://historical-pretty-guava.glitch.me/");
+>>>>>>> temp
 
 function App() {
 const [posts, setPosts] = useState();
@@ -20,6 +32,7 @@ const [noChangeToEtag, setNoChangeToEtag] = useState(false);
 fghjkl;
 
 
+<<<<<<< HEAD
   // socket.onopen = () => {
   //     console.log(("Websocket client connected"));
   //     socket.send(JSON.stringify("hello from react app"))
@@ -30,11 +43,34 @@ fghjkl;
   // socket.onerror = function() {
   //     console.log('Connection Error');
   // };
+=======
+  socket.onopen = () => {
+      console.log(("Websocket client connected"));
+      socket.send(JSON.stringify("hello from react app"))
+   };
+  socket.onmessage = (message) => {
+      console.log((message, "message"));
+   };
+  socket.onerror = function() {
+      console.log('Connection Error');
+  };
+>>>>>>> temp
 
 
 
 var isInit = false
-const socket = socketIOClient(ENDPOINT);
+// const socket = socketIOClient(ENDPOINT, { 
+//     "force new connection" : true,
+// "reconnectionAttempts": "Infinity", 
+// "timeout" : 10000,                  
+// "transports" : ["websocket"],
+// withCredentials:true,
+//     extraHeaders:{
+//         "my-custom-header": "abcd"
+//     }
+
+// });
+
 useEffect(() => {
 
    var etag = ""
@@ -96,7 +132,26 @@ socket.on('order', (data) => {
 }, []);
 
 
+<<<<<<< HEAD
 
+=======
+function buttonClicked() {
+ 
+   localStorage.removeItem("currentOrders")
+  fetch("https://historical-pretty-guava.glitch.me//api", {cache: "default"})
+     .then((res) => res.json())
+     .then((data) => {
+        setPosts(JSON.parse(data));
+        console.log("received 2", data, "received 2");
+    
+     })
+     .catch((err) => {
+        console.log(err.message);
+        console.log("error");
+        
+     });
+}
+>>>>>>> temp
 
   return (
     <div className="App">
