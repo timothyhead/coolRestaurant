@@ -81,13 +81,8 @@ setMenuArray(menu);
     
        <Routes>
  
-<<<<<<< HEAD
-        <Route  path="/to-restaurant" element={<CreateMenu set={setMenu}/>}/>
-        <Route  path="/Orders"  element={<Orders data={props.data} changeOrders={props.changeOrders} noChangeToEtag={props.noChangeToEtag}/> } />
-=======
         <Route  path="/to-restaurant" element={<EditMenu set={setMenu}/>}/>
         <Route  path="/orders"  element={<Orders data={props.data} changeOrders={props.changeOrders} noChangeToEtag={props.noChangeToEtag}/> } />
->>>>>>> temp
         <Route   path="/finishedMenu" element={<FinishedMenu isRedBorder={false} menuArray={aMenuArray} add={isClicked}/>}/>
         
        </Routes>
