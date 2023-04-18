@@ -61,7 +61,7 @@ setMenuArray(menu);
 
     return(
       
-        <Router basename="timothyhead-coolRestaurantPublic"> 
+        <Router basename="https://coolrestaurant.uk"> 
     
    <div>
    <header>

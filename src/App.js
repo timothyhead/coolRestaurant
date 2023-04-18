@@ -2,12 +2,6 @@
 import './App.css';
 import React, {useEffect, useState } from 'react';
 import Header from './Header';
-<<<<<<< HEAD
-import socketIOClient from 'socket.io-client';
-const ENDPOINT = "localhost: 8080";
-//import io from 'socket.io-client';
-
-=======
 //import socketIOClient from 'socket.io-client';
 
 
@@ -17,7 +11,6 @@ const ENDPOINT = "localhost: 8080";
 //const ENDPOINT = "https://localhost:8080";
 
 const socket = io("https://historical-pretty-guava.glitch.me/");
->>>>>>> temp
 
 function App() {
 const [posts, setPosts] = useState();
@@ -29,21 +22,9 @@ const [noChangeToEtag, setNoChangeToEtag] = useState(false);
 
 
 
-fghjkl;
 
 
-<<<<<<< HEAD
-  // socket.onopen = () => {
-  //     console.log(("Websocket client connected"));
-  //     socket.send(JSON.stringify("hello from react app"))
-  //  };
-  // socket.onmessage = (message) => {
-  //     console.log((message, "message"));
-  //  };
-  // socket.onerror = function() {
-  //     console.log('Connection Error');
-  // };
-=======
+
   socket.onopen = () => {
       console.log(("Websocket client connected"));
       socket.send(JSON.stringify("hello from react app"))
@@ -54,7 +35,6 @@ fghjkl;
   socket.onerror = function() {
       console.log('Connection Error');
   };
->>>>>>> temp
 
 
 
@@ -132,9 +112,6 @@ socket.on('order', (data) => {
 }, []);
 
 
-<<<<<<< HEAD
-
-=======
 function buttonClicked() {
  
    localStorage.removeItem("currentOrders")
@@ -151,7 +128,6 @@ function buttonClicked() {
         
      });
 }
->>>>>>> temp
 
   return (
     <div className="App">

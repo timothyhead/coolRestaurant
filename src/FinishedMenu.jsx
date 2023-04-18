@@ -35,7 +35,7 @@ function FinishedMenu(props) {
 
    useEffect(() => {
 // if (didInit == false) {
-    didInit = true
+    // didInit = true
     fetch("https://historical-pretty-guava.glitch.me/sendMenuToRectApp/")
     .then((res) => res.json())
     .then((data) => {
