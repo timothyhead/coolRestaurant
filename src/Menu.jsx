@@ -284,7 +284,7 @@ function resetOutGoingMenuArrayToBackend() {
 
     return (
         <div className={aClass}>
-<h1 className="corner green">Menu Hello world</h1>
+<h1 className="corner green">Menu Hello world XXXXX</h1>
 <section className="">
 
 <MenuList  className="menu-div" sectionName="Appetisers" menuItems={appetisers} delete={deleteAppetisers}/>
