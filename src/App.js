@@ -38,7 +38,7 @@ const [noChangeToEtag, setNoChangeToEtag] = useState(false);
 
 
 
-var isInit = false
+// var isInit = false
 // const socket = socketIOClient(ENDPOINT, { 
 //     "force new connection" : true,
 // "reconnectionAttempts": "Infinity", 
@@ -109,25 +109,10 @@ socket.on('order', (data) => {
       socket.off('order');
     };
    
-}, []);
+}, [noChangeToEtag]);
 
 
-function buttonClicked() {
- 
-   localStorage.removeItem("currentOrders")
-  fetch("https://historical-pretty-guava.glitch.me//api", {cache: "default"})
-     .then((res) => res.json())
-     .then((data) => {
-        setPosts(JSON.parse(data));
-        console.log("received 2", data, "received 2");
-    
-     })
-     .catch((err) => {
-        console.log(err.message);
-        console.log("error");
-        
-     });
-}
+
 
   return (
     <div className="App">

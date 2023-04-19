@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {BrowserRouter as Router, Link, Routes,  Route, Outlet} from "react-router-dom";
 import FinishedMenu from "./FinishedMenu";
 import EditMenu from "./EditMenu";
@@ -23,23 +23,7 @@ import Orders from "./Orders";
                 
              }]);
   
- 
 
-   
-
-    // useEffect( () => {
-    //     aMenuArray = [{
-    //         mealName: "",
-    //         bodyText: "",
-    //         image: "",
-    //         detailText: "",
-    //         price: "",
-    //          section: ""
-    // }];
-                    
-
-        
-    // }, [props.data]);
 
     function setMenu(menu) {
         console.log(menu, "menu");
@@ -61,7 +45,7 @@ setMenuArray(menu);
 
     return(
       
-        <Router basename="https://coolrestaurant.uk"> 
+        <Router basename="/"> 
     
    <div>
    <header>

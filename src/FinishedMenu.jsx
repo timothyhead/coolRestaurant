@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState, useCallback} from "react";
 import MenuList from "./MenuList";
 
 
@@ -57,7 +57,184 @@ function FinishedMenu(props) {
  
   
    }, []);
+   const  populateMenu = useCallback((myProps) => {
+      
+    switch (myProps.section) {
+      
+        case "Appetisers":
+           
+            setAppetisers((preValue) => {
+           
+                if (preValue.length !== 0) {
+                    if (preValue[0].menuItem.length === 1 ) {
+                    
+                        return    [{
+                     
+                   menuItem:  [myProps.mealName, myProps.bodyText],
+                   detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Appetisers"
+               
+                            
+                           
+                        }]
+                    } else {
+                 
+                        return    [...preValue,{
+                            menuItem:  [myProps.mealName, myProps.bodyText],
+                            detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText],  section: "Appetisers"
+                           
+                                     
+                                    
+                                 }];
+                    }
+                  } else {
+                        
+                            
+                    return [ {
+                        menuItem:  [myProps.mealName, myProps.bodyText],
+                        detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText],  section: "Appetisers"
+                       
+                                 
+                                
+                             }]
+                  }
+              
+            });
+        break;
+        case "Salads and soups":
+            setSaladAndSoups((preValue) => {
+                if (preValue.length !== 0) {
+                    if (preValue[0].menuItem.length === 1 ) {
+                        return    [{
+                   menuItem:  [myProps.mealName, myProps.bodyText],
+                   detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Salads and soups"
+               
+                            
+                           
+                        }]
+                    } else {
+                      
+                        return    [...preValue,{
+                            menuItem:  [myProps.mealName, myProps.bodyText],
+                            detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Salads and soups"
+                           
+                                     
+                                    
+                                 }];
+                    }
+                  } else {
+                    return [ {
+                        menuItem:  [myProps.mealName, myProps.bodyText],
+                        detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Salads and soups"
+                       
+                                 
+                                
+                             }]
+                  }
+            });
+        break;
+        case "Main":
+            setMain((preValue) => {
+                if (preValue.length !== 0) {
+                    if (preValue[0].menuItem.length === 1 ) {
+                        return    [{
+                   menuItem:  [myProps.mealName, myProps.bodyText],
+                   detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Main"
+               
+                            
+                           
+                        }]
+                    } else {
+                      
+                        return    [...preValue,{
+                            menuItem:  [myProps.mealName, myProps.bodyText],
+                            detail: [myProps.image?.preview, myProps.detailText], section: "Main"
+                           
+                                     
+                                    
+                                 }];
+                    }
+                  } else {
+                    return [ {
+                        menuItem:  [myProps.mealName, myProps.bodyText],
+                        detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Main"
+                       
+                                 
+                                
+                             }]
+                  }
+              
+            });
+        break;
+        case "Sides":
+            setSides((preValue) => {
+                if (preValue.length !== 0) {
+                    if (preValue[0].menuItem.length === 1 ) {
+                        return    [{
+                   menuItem:  [myProps.mealName, myProps.bodyText],
+                   detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Sides"
+               
+                            
+                           
+                        }]
+                    } else {
+                      
+                        return    [...preValue,{
+                            menuItem:  [myProps.mealName, myProps.bodyText],
+                            detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Sides"
+                           
+                                     
+                                    
+                                 }];
+                    }
+                  } else {
+                    return [ {
+                        menuItem:  [myProps.mealName, myProps.bodyText],
+                        detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Sides"
+                       
+                                 
+                                
+                             }]
+                  }
+            });
+        break;
+        case "Specalties":
 
+         setSpecalties((preValue) => {
+          if (preValue.length !== 0) {
+            if (preValue[0].menuItem.length === 1 ) {
+                return    [{
+           menuItem:  [myProps.mealName, myProps.bodyText],
+           detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Specalties"
+       
+                    
+                   
+                }]
+            } else {
+              
+                return    [...preValue,{
+                    menuItem:  [myProps.mealName, myProps.bodyText],
+                    detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Specalties"
+                   
+                             
+                            
+                         }];
+            }
+          } else {
+            return [ {
+                menuItem:  [myProps.mealName, myProps.bodyText],
+                detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Specalties"
+               
+                         
+                        
+                     }]
+          }
+            }) ;
+        break;
+        default:
+            break
+      }
+     
+ }, [isLoadingFromBackUp])
 
  useEffect(() => {
  
@@ -67,7 +244,7 @@ function FinishedMenu(props) {
     });
     setsIsLoadingFromBackUp(false)
 
- }, [posts])
+ }, [posts,  populateMenu])
 
 
 
@@ -80,182 +257,7 @@ function FinishedMenu(props) {
 
     
   
-    function populateMenu(myProps) {
-      
-        switch (myProps.section) {
-          
-            case "Appetisers":
-               
-                setAppetisers((preValue) => {
-               
-                    if (preValue.length !== 0) {
-                        if (preValue[0].menuItem.length === 1 ) {
-                        
-                            return    [{
-                         
-                       menuItem:  [myProps.mealName, myProps.bodyText],
-                       detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Appetisers"
-                   
-                                
-                               
-                            }]
-                        } else {
-                     
-                            return    [...preValue,{
-                                menuItem:  [myProps.mealName, myProps.bodyText],
-                                detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText],  section: "Appetisers"
-                               
-                                         
-                                        
-                                     }];
-                        }
-                      } else {
-                            
-                                
-                        return [ {
-                            menuItem:  [myProps.mealName, myProps.bodyText],
-                            detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText],  section: "Appetisers"
-                           
-                                     
-                                    
-                                 }]
-                      }
-                  
-                });
-            break;
-            case "Salads and soups":
-                setSaladAndSoups((preValue) => {
-                    if (preValue.length !== 0) {
-                        if (preValue[0].menuItem.length === 1 ) {
-                            return    [{
-                       menuItem:  [myProps.mealName, myProps.bodyText],
-                       detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Salads and soups"
-                   
-                                
-                               
-                            }]
-                        } else {
-                          
-                            return    [...preValue,{
-                                menuItem:  [myProps.mealName, myProps.bodyText],
-                                detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Salads and soups"
-                               
-                                         
-                                        
-                                     }];
-                        }
-                      } else {
-                        return [ {
-                            menuItem:  [myProps.mealName, myProps.bodyText],
-                            detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Salads and soups"
-                           
-                                     
-                                    
-                                 }]
-                      }
-                });
-            break;
-            case "Main":
-                setMain((preValue) => {
-                    if (preValue.length !== 0) {
-                        if (preValue[0].menuItem.length === 1 ) {
-                            return    [{
-                       menuItem:  [myProps.mealName, myProps.bodyText],
-                       detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Main"
-                   
-                                
-                               
-                            }]
-                        } else {
-                          
-                            return    [...preValue,{
-                                menuItem:  [myProps.mealName, myProps.bodyText],
-                                detail: [myProps.image?.preview, myProps.detailText], section: "Main"
-                               
-                                         
-                                        
-                                     }];
-                        }
-                      } else {
-                        return [ {
-                            menuItem:  [myProps.mealName, myProps.bodyText],
-                            detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Main"
-                           
-                                     
-                                    
-                                 }]
-                      }
-                  
-                });
-            break;
-            case "Sides":
-                setSides((preValue) => {
-                    if (preValue.length !== 0) {
-                        if (preValue[0].menuItem.length === 1 ) {
-                            return    [{
-                       menuItem:  [myProps.mealName, myProps.bodyText],
-                       detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Sides"
-                   
-                                
-                               
-                            }]
-                        } else {
-                          
-                            return    [...preValue,{
-                                menuItem:  [myProps.mealName, myProps.bodyText],
-                                detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Sides"
-                               
-                                         
-                                        
-                                     }];
-                        }
-                      } else {
-                        return [ {
-                            menuItem:  [myProps.mealName, myProps.bodyText],
-                            detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Sides"
-                           
-                                     
-                                    
-                                 }]
-                      }
-                });
-            break;
-            case "Specalties":
-    
-             setSpecalties((preValue) => {
-              if (preValue.length !== 0) {
-                if (preValue[0].menuItem.length === 1 ) {
-                    return    [{
-               menuItem:  [myProps.mealName, myProps.bodyText],
-               detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Specalties"
-           
-                        
-                       
-                    }]
-                } else {
-                  
-                    return    [...preValue,{
-                        menuItem:  [myProps.mealName, myProps.bodyText],
-                        detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Specalties"
-                       
-                                 
-                                
-                             }];
-                }
-              } else {
-                return [ {
-                    menuItem:  [myProps.mealName, myProps.bodyText],
-                    detail: [isLoadingFromBackUp ? myProps.image: myProps.image?.preview, myProps.detailText], section: "Specalties"
-                   
-                             
-                            
-                         }]
-              }
-                }) ;
-            break;
-          }
-         
-     }
+
     
 
 function deleteSpecalties(id) {

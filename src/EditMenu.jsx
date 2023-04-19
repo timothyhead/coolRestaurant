@@ -11,7 +11,7 @@ function EditMenu(props) {
     const [price, setPrice] = useState("")
      var [isClicked, setIsClicked] = useState(false);
      const [selectedFile, setSelectedFile] = useState();
-     const data = ""
+  
    
      
    
@@ -158,7 +158,7 @@ function setMenu(menuArray) {
  
     </form>
     <div>
-    {selectedFile ? <img class="image100 centre" src={selectedFile.preview} alt="image"></img>: null }
+    {selectedFile ? <img class="image100 centre" src={selectedFile.preview} alt=""></img>: null }
     </div>
     </div>
 

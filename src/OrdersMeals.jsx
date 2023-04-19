@@ -8,28 +8,21 @@ function OrdersMeals(props) {
 
 const  [orders, setOrders] = useState([])
  const  [heightForSection, setHeightForSection] = useState()
- var id = 0
 
 
-var isInit = false
+
+
        
 useEffect(() => {
-//if (isInit == false) {
-    isInit = true
-
-    setOrders(props.meals) 
-
-
-//}
+setOrders(props.meals)
 }, [props.meals])
 
-//var didinit = false
+
 useEffect(() => {
-   // if (!didinit) {
-       // didinit = true
+ 
     
         setHeightForSection(orders?.orderAndCount?.length * 20)
-   // }
+ 
 
 
 }, [orders])

@@ -36,9 +36,7 @@ function Menu(props) {
     const [aClass, setAClass]  = useState()
   
     const [menu, setMenu]  = useState([]);
-  
-    
-    const [newMenu, setNewMenu] = useState([]);
+
   
 const ref = useRef(null);
 
@@ -68,7 +66,7 @@ if (props.mealName !== "") {
     
     
   
-   }, [props.add])
+   }, [props])
 
   
     function populateMenu(props) {
@@ -133,6 +131,8 @@ if (props.mealName !== "") {
                          }];
                 }) ;
             break;
+            default:
+                break
           }
     
           setMenu(preValue => {
@@ -208,7 +208,7 @@ setSides([]);
     setSpecalties([]);
     
 
-    const anotherResponse = await fetch("https://historical-pretty-guava.glitch.me/recievedMenu", {
+    await fetch("https://historical-pretty-guava.glitch.me/recievedMenu", {
 
         method: "POST",
         headers: {
@@ -284,7 +284,7 @@ function resetOutGoingMenuArrayToBackend() {
 
     return (
         <div className={aClass}>
-<h1 className="corner green">Menu hello</h1>
+<h1 className="corner green">Menu</h1>
 <section className="">
 
 <MenuList  className="menu-div" sectionName="Appetisers" menuItems={appetisers} delete={deleteAppetisers}/>

@@ -1,7 +1,7 @@
 
-import { logDOM } from "@testing-library/react";
-import { getValue } from "@testing-library/user-event/dist/utils";
-import React, { useEffect, useState } from "react";
+
+
+import React from "react";
 
 function MenuItem(props) {
     
@@ -13,9 +13,6 @@ const BodyText = menuItemArray[1]
 const detailArray = menuItems["detail"] || [];
 const image = detailArray[0];
 const price = detailArray[1];
-
-const id = menuItems.id
-
 
 function handleClick() {
     props.onDelete(props.id)
@@ -32,7 +29,7 @@ function handleClick() {
    </div>
    <details className="centre margin-bottom-30 inline">
 
-   <img className="image50" src={image}></img>
+   <img className="image50" src={image} alt=""></img>
    </details>
    <button className="inline" onClick={handleClick}>
     Delete
