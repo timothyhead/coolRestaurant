@@ -33,14 +33,12 @@ function Menu(props) {
         sectionName: "",
         image:  String
         }]);
+        
     const [aClass, setAClass]  = useState()
-  
     const [menu, setMenu]  = useState([]);
 
-  
-const ref = useRef(null);
 
-
+    const ref = useRef(null);
 
 
 
@@ -54,19 +52,17 @@ const ref = useRef(null);
 
    setAClass("silk corner flex-container-vertical border-red menu-div-for-to-retaurant-app-menu") 
 
-        
-if (props.mealName !== "") {
-    populateMenu(props) 
-    console.log("Hello populate menu");
-}
        
-     
-    
-        
-    
-    
-  
-   }, [props])
+if (props.mealName !== "") {
+ 
+    populateMenu(props) 
+
+}
+ 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [props.add]);
+
+
 
   
     function populateMenu(props) {
@@ -74,7 +70,6 @@ if (props.mealName !== "") {
         switch (props.section) {
           
             case "Appetisers":
-               
                 setAppetisers((preValue) => {
                
                     return [...preValue, {
@@ -209,7 +204,7 @@ setSides([]);
     
 
     await fetch("https://historical-pretty-guava.glitch.me/recievedMenu", {
-
+mode: "no-cors",
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -219,7 +214,7 @@ setSides([]);
        
 
      })
-    setMenu([])
+    // setMenu([])
   
  
 
@@ -286,7 +281,7 @@ function resetOutGoingMenuArrayToBackend() {
         <div className={aClass}>
 <h1 className="corner green">Menu Hello world XXXXX</h1>
 <section className="">
-
+{console.log("more appetisers", appetisers)}
 <MenuList  className="menu-div" sectionName="Appetisers" menuItems={appetisers} delete={deleteAppetisers}/>
 <MenuList sectionName="Salads and Soups" menuItems={saladsAndSoups} delete={deleteSaladsAndSoups}/>
 <MenuList sectionName="Main" menuItems={main} delete={deleteMain}/>

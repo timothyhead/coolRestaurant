@@ -1,7 +1,7 @@
 {
   "name": "restaurant-app-website-react",
   "version": "0.1.0",
-  "homepage": "https://coolrestaurant.uk",
+  "homepage": "http://localhost:3000",
   "private": true,
   "proxy": "https://historical-pretty-guava.glitch.me/",
   "dependencies": {

@@ -4,11 +4,11 @@ import MenuItem from "./MenuItem";
 
 function MenuList(props) {
 
-  useEffect(() => {
-
-      props.menuItems.shift()
- 
-  }, [ props.menuItems])
+//   useEffect(() => {
+//     console.log("menuitems", props.menuItems)
+//      // props.menuItems.shift()
+//  ;
+//   }, [ props.menuItems])
 
 function handleClick(id) {
 
@@ -17,6 +17,7 @@ function handleClick(id) {
 props.delete(id)
 
 }
+
  
 return (
     <div>
@@ -24,6 +25,7 @@ return (
    
     <ul>
    {
+  
  
   props.menuItems?.map( function(item, index) {
 
