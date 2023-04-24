@@ -45,7 +45,7 @@ setMenuArray(menu);
 
     return(
       
-        <Router basename="/"> 
+        <Router> 
     
    <div>
    <header>
@@ -55,7 +55,7 @@ setMenuArray(menu);
 
 <Link  className="block" to="/finishedMenu">Menu</Link>
 
-<Link  to="/Orders">Orders</Link>
+<Link  to="/orders">Orders</Link>
 <Link className="block" to="/to-restaurant">Create Menu</Link>
  
        </nav>

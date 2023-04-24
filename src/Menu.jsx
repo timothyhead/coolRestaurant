@@ -52,14 +52,16 @@ function Menu(props) {
 
    setAClass("silk corner flex-container-vertical border-red menu-div-for-to-retaurant-app-menu") 
 
-       
+
 if (props.mealName !== "") {
- 
+    console.log("props", props);
     populateMenu(props) 
+   
+   
 
 }
  
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  
    }, [props.add]);
 
 
@@ -137,6 +139,9 @@ if (props.mealName !== "") {
        
        
      }
+     useEffect(() => {
+console.log(menu, "menu");
+     }, [menu])
     
 
 function deleteSpecalties(id) {
@@ -193,7 +198,7 @@ function deleteAppetisers(id) {
 }
 
  async function handleSet(event) {
-  console.log("Set");
+  console.log("Set", menu);
 
     props.set(menu) 
 setAppetisers([]);
@@ -204,7 +209,7 @@ setSides([]);
     
 
     await fetch("https://historical-pretty-guava.glitch.me/recievedMenu", {
-mode: "no-cors",
+mode: "cors",
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

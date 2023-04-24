@@ -37,7 +37,7 @@ useEffect(() => {
 
   function handleClick() {
   setIsClicked(isClicked = !isClicked)
-
+console.log("isclicked");
   setIsClicked((state) => {
 
     return state;
