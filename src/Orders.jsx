@@ -158,7 +158,7 @@ if (prevalue != null) {
 
 setHasChangedCurrentOrders(state => !state)
     }
-}, [hasChangedOrders, address, currentOrders, appetisers, didinit2, j, main, props.changeOrders,props.data.date, saladndSoups, sides, specalties])
+}, [hasChangedOrders, address, currentOrders, appetisers, didinit2, j, main, props.changeOrders ,props.data , saladndSoups, sides, specalties])
  
 
 
