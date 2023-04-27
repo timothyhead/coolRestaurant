@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useState } from "react"
 import CustomerDetails from "./CustomerDetails";
 import OrdersMeals from "./OrdersMeals";
+import {io} from 'socket.io-client';
+
 
 
 function Orders(props) {
@@ -15,48 +17,82 @@ function Orders(props) {
     const [currentOrders, setCurrentOrders] = useState(["Placeholder"]);
     const [hasChangedOrders, setHasChangedOrders] = useState(false)
     const[hasChangedCurrentOrders, setHasChangedCurrentOrders] = useState(false)
-    const [didinit, setdidinit] = useState(false);
-    const [didinit2, setdidinit2] = useState(false);
-    const [didinit3, setdidinit3] = useState(false);
+    const [posts, setPosts] = useState();
+    const [isChangeToOrders, SetIsChangeToOrders] = useState(false);
+    const [noChangeToEtag, setNoChangeToEtag] = useState(false);
 
     var id = 0
-    var obj = useRef([])
     var j = 1
 
+    // socketio
+
+    const socket = io("https://historical-pretty-guava.glitch.me/");
 
     
-   
+    socket.on('disconnect', () => {
+        console.log("false");
+       });
+      
+      var etag = ""
+      socket.on('connect', () => {
+        console.log("True");
+         });
 
-useEffect(() => {
+   
+      socket.on('order', (data) => {
+       
+      
+            let myData = JSON.parse(data);
+            
+            etag = myData.Etag
+           if (etag !== localStorage.getItem("Etag")) {
+         
+             console.log("etags differnt");
+               setPosts(JSON.parse(myData.order));
+               SetIsChangeToOrders(true);
+               localStorage.setItem("Etag", etag)
+          
+            } else {
+              
+                  SetIsChangeToOrders(false);
+                 //  toggle nochangeToEtag to update use effect in orders when changetoOrders == false
+                 setNoChangeToEtag(!noChangeToEtag === noChangeToEtag)
+               
+            }
+        
+       });
   
 
-      if (props.changeOrders === true) {
+useEffect(() => {
+  console.log("isChangeToOrders", isChangeToOrders);
 
-console.log("data changed1", props.data);
+      if (isChangeToOrders === true) {
+
+console.log("data changed1", posts);
        
-        props?.data != null ? obj.current = props?.data : obj.current = null
-        if (obj.current) {
+    //    posts != null ? obj.current = posts : obj.current = null
+      
 
            
-            setOrders(obj.current.orders)
+            setOrders(posts.orders)
            
-            setAddress(obj.current.address)
+            setAddress(posts.address)
          console.log(localStorage.getItem("currentOrders"), "ASDFGHJKWERTYUIOE%^&*()_+");
 if (localStorage.getItem("currentOrders")) {
    
     console.log("First useeffect current orders set", JSON.parse(localStorage.getItem("currentOrders")));
     setCurrentOrders(JSON.parse(localStorage.getItem("currentOrders")));
-    setdidinit(true)
+
 }
           
        
-        } 
+      
 
 
     } 
 
 
-}, [props.data, props.changeOrders])
+}, [posts, isChangeToOrders])
 
 
 
@@ -66,12 +102,11 @@ useEffect(() => {
  console.log("second use effect called");
    
     
-    if (props.changeOrders === true && didinit === true) {
-      setdidinit2(true)
+    if (isChangeToOrders === true) {
+    
     
 
 
-setdidinit(false)
   orders?.forEach((item) => {
 
 
@@ -81,8 +116,7 @@ setdidinit(false)
              }  else if (item.section === "Salads And Soups") {
                 setSaladsAndSoups(item)
              }  else if (item.section === "Main") {
-        
-            setMain(item)
+                setMain(item)
              }  else if (item.section === "Sides") {
                 setSides(item)
              } else if(item.section === "Specalties") {
@@ -106,8 +140,8 @@ setdidinit(false)
 
         }
     
- 
-}, [didinit, orders, props.changeOrders])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [orders])
 
 
 
@@ -116,16 +150,16 @@ setdidinit(false)
   
 
 useEffect(() => {
-   console.log("use effect3", props.changeOrders, didinit2);
+  
  
-       setdidinit3(true)
-    if (props.changeOrders === true && didinit2 === true) {
-       setdidinit2(false)
+    
+    if (isChangeToOrders === true) {
+      
    
-        console.log("Set current orders again", currentOrders);
+        
 
 setCurrentOrders((prevalue) => {
-if (prevalue != null) {
+
     console.log(prevalue, "prevalue");
   return  [...prevalue, {
         address: address,
@@ -138,19 +172,7 @@ if (prevalue != null) {
         date: props.data?.date
        
     }] 
-} else {
-    return  [{
-        address: address,
-        appetisers: appetisers,
-        saladandSoups: saladndSoups,
-        main: main,
-        sides: sides,
-        specalties: specalties,
-        id: j,
-        date: props.data?.date
-       
-    }] 
-}
+
 
     
 })
@@ -158,7 +180,8 @@ if (prevalue != null) {
 
 setHasChangedCurrentOrders(state => !state)
     }
-}, [hasChangedOrders, address, currentOrders, appetisers, didinit2, j, main, props.changeOrders ,props.data , saladndSoups, sides, specalties])
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [hasChangedOrders])
  
 
 
@@ -166,21 +189,21 @@ setHasChangedCurrentOrders(state => !state)
 useEffect(() => {
  
 
-   if (props.changeOrders === true && didinit3 === true) {
-   setdidinit3(false)
+   if (isChangeToOrders === true) {
+ 
     localStorage.setItem("currentOrders", JSON.stringify(currentOrders));
-    console.log("use effect 4", currentOrders);
+   
 }
-    
-}, [hasChangedCurrentOrders, currentOrders, didinit3, props.changeOrders])
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [hasChangedCurrentOrders])
 
 useEffect(() => {
 
-    if  (props.changeOrders === false) {
-      console.log(localStorage.getItem("currentOrders"), "props.changeOrders == false");
+    if  (isChangeToOrders === false) {
+      
        
 
-        localStorage.setItem("currentOrders",  localStorage.getItem("current") === undefined ? null : JSON.parse(localStorage.getItem("current")))
+       // localStorage.setItem("currentOrders",  localStorage.getItem("current") === undefined ? null : JSON.parse(localStorage.getItem("current")))
     const storedItem = localStorage.getItem("currentOrders");
     if (storedItem) {
       
@@ -195,7 +218,8 @@ useEffect(() => {
     }
    
 }
-}, [props.noChangeToEtag, currentOrders, props.changeOrders])
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [noChangeToEtag])
 
 
 

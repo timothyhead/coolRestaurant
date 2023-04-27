@@ -8,31 +8,11 @@ import MenuList from "./MenuList";
 
 function Menu(props) {
 
-    const [appetisers, setAppetisers] = useState([{ menuItem:  [],
-        detail: [], 
-        sectionName: "",
-        image: String
-        }]);
-    const [saladsAndSoups, setSaladAndSoups] = useState([{ menuItem:  [],
-        detail: [], 
-        sectionName: "",
-        image: String
-       }]);
-    const [main, setMain] = useState([{ menuItem:  [],
-        detail: [], 
-        sectionName: "",
-        image:  String
-       }]);
-    const [sides, setSides] = useState([{menuItem:  [],
-        detail: [], 
-        sectionName: "",
-        image:  String
-       }]);
-    const [specalties, setSpecalties] = useState([{ menuItem:  [],
-        detail: [], 
-        sectionName: "",
-        image:  String
-        }]);
+    const [appetisers, setAppetisers] = useState([]);
+    const [saladsAndSoups, setSaladAndSoups] = useState([]);
+    const [main, setMain] = useState([]);
+    const [sides, setSides] = useState([]);
+    const [specalties, setSpecalties] = useState([]);
         
     const [aClass, setAClass]  = useState()
     const [menu, setMenu]  = useState([]);
@@ -61,7 +41,6 @@ if (props.mealName !== "") {
 
 }
  // eslint-disable-next-line react-hooks/exhaustive-deps
-  
    }, [props.add]);
 
 
@@ -139,9 +118,7 @@ if (props.mealName !== "") {
        
        
      }
-     useEffect(() => {
-console.log(menu, "menu");
-     }, [menu])
+ 
     
 
 function deleteSpecalties(id) {
@@ -219,7 +196,7 @@ mode: "cors",
        
 
      })
-    // setMenu([])
+    //  setMenu([])
   
  
 

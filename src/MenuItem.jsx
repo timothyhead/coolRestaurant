@@ -31,9 +31,11 @@ function handleClick() {
 
    <img className="image50" src={image} alt=""></img>
    </details>
-   <button className="inline" onClick={handleClick}>
+  {
+    (props.finishedMenu === true) ? null :  <button className="inline" onClick={handleClick}>
     Delete
    </button>
+  }
      
         </div>
     )

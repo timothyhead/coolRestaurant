@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {BrowserRouter as Router, Link, Routes,  Route, Outlet} from "react-router-dom";
 import FinishedMenu from "./FinishedMenu";
 import EditMenu from "./EditMenu";
 import Orders from "./Orders";
+import Admin from "./Admin";
 
 
 
@@ -13,17 +14,12 @@ import Orders from "./Orders";
   
     const [isClicked, setIsClicked] = useState(false);
 
-    var [aMenuArray, setMenuArray] = useState([{
-        mealName: "",
-       bodyText: "",
-       image: null,
-       detailText: "",
-       price: "",
-        section: ""
-                
-             }]);
+    var [aMenuArray, setMenuArray] = useState([]);
+    const [isLogged, setIsLogged] = useState(false);
   
-
+useEffect(() => {
+isLoggedin(props.isLoggedin)
+}, [props.isLoggedin])
 
     function setMenu(menu) {
         console.log(menu, "menu");
@@ -38,25 +34,27 @@ setMenuArray(menu);
 
     };
     
- 
+ function isLoggedin(logged) {
+setIsLogged(logged)
+ }
 
  
  
 
     return(
       
-        <Router> 
+        <Router basename="/"> 
     
    <div>
    <header>
        <h1>Cool Restaurant</h1>
        <nav>
     
+<Link className="block" to="/Admin">Admin</Link>
+<Link  className="block" to="/FinishedMenu">Menu</Link>
 
-<Link  className="block" to="/finishedMenu">Menu</Link>
-
-<Link  to="/orders">Orders</Link>
-<Link className="block" to="/to-restaurant">Create Menu</Link>
+<Link  to="/Orders">Orders</Link>
+{isLogged === true &&  <Link className="block" to="/EditMenu">Create Menu</Link>}
  
        </nav>
        <Outlet />
@@ -64,10 +62,10 @@ setMenuArray(menu);
 
     
        <Routes>
- 
-        <Route  path="/to-restaurant" element={<EditMenu set={setMenu}/>}/>
-        <Route  path="/orders"  element={<Orders data={props.data} changeOrders={props.changeOrders} noChangeToEtag={props.noChangeToEtag}/> } />
-        <Route   path="/finishedMenu" element={<FinishedMenu isRedBorder={false} menuArray={aMenuArray} add={isClicked}/>}/>
+        <Route path="/Admin" element={<Admin isLoggedin={isLoggedin}/>}/>
+       <Route  path="/EditMenu" element={<EditMenu set={setMenu}/>}/>
+        <Route  path="/Orders"  element={<Orders/> } />
+        <Route   path="/FinishedMenu" element={<FinishedMenu isRedBorder={false} menuArray={aMenuArray} add={isClicked}/>}/>
         
        </Routes>
        <footer>

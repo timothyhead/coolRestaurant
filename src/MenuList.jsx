@@ -30,7 +30,7 @@ return (
   props.menuItems?.map( function(item, index) {
 
    return <li key={index}>
-<MenuItem  id={index} menuItem={item} onDelete={handleClick}/>
+<MenuItem  id={index} menuItem={item} onDelete={handleClick} finishedMenu={props.finishedMenu}/>
 
  </li>
   
